@@ -38,7 +38,7 @@ public class SmSdkPlugin implements Plugin<Project> {
         project.extensions.create("smsdk", SmSdkExtension)
 
         project.afterEvaluate {
-            Log.i "afterEvaluate"
+//            Log.i "afterEvaluate"
             checkConfig()
 
             checkCode()
@@ -71,11 +71,11 @@ public class SmSdkPlugin implements Plugin<Project> {
                         } else {
                             mergeAssetsOutputDirName = mergeAssetsTask.outputDir.path
                         }
-                        Log.i "mergeAssetsOutputDirName = ${mergeAssetsOutputDirName}"
+//                        Log.i "mergeAssetsOutputDirName = ${mergeAssetsOutputDirName}"
                         File log = createLogFile(mergeAssetsOutputDirName + "/smsdk-log.txt")
                         if (mergerReportFile != null && mergerReportFile.exists()) {
                             project.copy {
-                                Log.i "copy"
+//                                Log.i "copy"
                                 from mergerReportFile
                                 into mergeAssetsOutputDirName
                                 rename { "smsdk-manifest-merger-report.txt" }
@@ -105,8 +105,8 @@ public class SmSdkPlugin implements Plugin<Project> {
 
     private final String checkCode() {
         def appKeyMd5 = md5(smSdk.appKey)
-        Log.i "checkCode appKey = $smSdk.appKey"
-        Log.i "checkCode appKeyMd5 = $appKeyMd5"
+//        Log.i "checkCode appKey = $smSdk.appKey"
+//        Log.i "checkCode appKeyMd5 = $appKeyMd5"
         android.defaultConfig.buildConfigField("String", "CHECK_CODE", "\"$appKeyMd5\"")
     }
 
