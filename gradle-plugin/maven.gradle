@@ -1,0 +1,18 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        gradlePlugin(MavenPublication) {
+            groupId GROUP_ID
+            artifactId ARTIFACT_ID
+            version VERSION
+
+            artifact("$buildDir/libs/gradle-plugin.jar")
+        }
+    }
+
+    repositories {
+        mavenLocal()
+//        url "$buildDir/repo"
+    }
+}
